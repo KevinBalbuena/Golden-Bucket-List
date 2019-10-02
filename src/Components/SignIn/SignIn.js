@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setUser } from "../../dux/reducer";
+import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import axios from "axios";
 import "./SignIn.css";
@@ -11,6 +14,13 @@ class SignIn extends Component {
       password: ""
     };
   }
+  onEmailChange = e => {
+    this.setState({ email: e.target.value });
+  };
+
+  onPasswordChange = e => {
+    this.setState({ password: e.target.value });
+  };
 
   login = async () => {
     const { email, password } = this.state;
@@ -18,16 +28,8 @@ class SignIn extends Component {
       email,
       password
     });
-    this.props.saveUser(loggedInUser.data);
+    this.props.setUser(loggedInUser.data);
     this.props.history.push("/home");
-  };
-
-  onEmailChange = e => {
-    this.setState({ email: e.target.value });
-  };
-
-  onPasswordChange = e => {
-    this.setState({ password: e.target.value });
   };
 
   render() {
@@ -68,7 +70,9 @@ class SignIn extends Component {
                 </button>
               </div>
               <div className="mt3">
-                <p className="dim">Register</p>
+                <Link to="/">
+                  <button className="dim">Register</button>
+                </Link>
               </div>
             </div>
           </main>
@@ -78,4 +82,16 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+function mapStateToProps(reduxState) {
+  return reduxState;
+}
+const mapDispatchToProps = {
+  setUser
+};
+
+const authEnhancingFunction = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default authEnhancingFunction(SignIn);

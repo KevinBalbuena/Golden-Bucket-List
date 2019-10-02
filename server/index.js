@@ -38,7 +38,7 @@ massive(CONNECTION_STRING)
     });
   });
 
-app.post("/resister_user", registerUser);
+app.post("/register_user", registerUser);
 app.post("/login_user", loginUser);
 
 app.listen(SERVER_PORT, () => {

@@ -1,0 +1,22 @@
+$mainBlack: #222;
+$mainWhite: #fff;
+$mainFont: "Noto Serif", serif;
+$mainGrey: #ececec;
+$mainBlue: #00b7cc;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(232, 65, 138, 1) 5%,
+    rgba(20, 194, 227, 1) 91%
+  );
+}
+
+button {
+  cursor: pointer;
+}
