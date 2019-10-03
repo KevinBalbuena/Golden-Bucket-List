@@ -1,0 +1,56 @@
+@import "../../index.scss";
+
+.contact-info {
+  padding-top: 15rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-title {
+  font-size: 3rem;
+  color: $mainBlue;
+  text-shadow: 0 0 3px $mainBlack, 0 0 5px $mainBlack;
+}
+
+.phone-info {
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem;
+}
+
+.message-label {
+  color: $mainBlue;
+  font-size: 1.8rem;
+  text-shadow: 0 0 3px $mainBlack, 0 0 5px $mainBlack;
+  padding: 2.4rem;
+}
+
+.number-input {
+  margin: 0.6rem;
+  width: 100%;
+  height: 1.8rem;
+}
+
+.problem-input {
+  margin: 0.6rem;
+  width: 100%;
+  height: 5.5rem;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.message-btn {
+  font-size: 1rem;
+  border-radius: 20px;
+  padding: 0.7rem;
+  background: $mainBlack;
+  color: $mainWhite;
+  &:hover {
+    background: $mainBlue;
+    font-size: 1.3rem;
+  }
+}

@@ -3,6 +3,12 @@ const express = require("express");
 const session = require("express-session");
 const massive = require("massive");
 const cors = require("cors");
+const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
+const client = require("twilio")(
+  process.env.ACCOUNT_SID,
+  process.env.AUTH_TOKEN
+);
 var path = require("path");
 const app = express();
 const { loginUser, registerUser } = require("./Controller/authController");
@@ -19,7 +25,10 @@ app.use(
     }
   })
 );
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
 massive(CONNECTION_STRING)
   .then(db => {
     console.log("db connected");
@@ -40,6 +49,23 @@ massive(CONNECTION_STRING)
 
 app.post("/register_user", registerUser);
 app.post("/login_user", loginUser);
+
+app.post("/api/message", (req, res) => {
+  // console.log(req.body);
+  client.messages
+    .create({
+      from: process.env.VERIFIED_NUMBER,
+      to: req.body.number,
+      body: req.body.message
+    })
+    .then(() => {
+      res.json({ success: true });
+    })
+    .catch(err => {
+      console.log(err);
+      res.json({ success: false });
+    });
+});
 
 app.listen(SERVER_PORT, () => {
   console.log(`Server listening on port ${SERVER_PORT}`);

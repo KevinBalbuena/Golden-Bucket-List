@@ -41,7 +41,7 @@
   margin-right: 0;
 }
 
-label {
+.sign-label {
   display: block;
   text-align: center;
   font-size: 0.875rem;

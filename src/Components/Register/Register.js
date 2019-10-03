@@ -50,7 +50,9 @@ class Register extends Component {
               <fieldset id="sign_up" className="form">
                 <legend className="sign-in">Register</legend>
                 <div style={{ marginTop: "1rem" }}>
-                  <label htmlFor="name">Name</label>
+                  <label className="sign-label" htmlFor="name">
+                    Name
+                  </label>
                   <input
                     className="user-input"
                     type="text"
@@ -61,7 +63,9 @@ class Register extends Component {
                   />
                 </div>
                 <div style={{ marginTop: "1rem" }}>
-                  <label htmlFor="email-address">Email</label>
+                  <label className="sign-label" htmlFor="email-address">
+                    Email
+                  </label>
                   <input
                     className="user-input"
                     type="email"
@@ -71,7 +75,9 @@ class Register extends Component {
                   />
                 </div>
                 <div style={{ marginTop: "1rem" }}>
-                  <label htmlFor="password">Password</label>
+                  <label className="sign-label" htmlFor="password">
+                    Password
+                  </label>
                   <input
                     className="user-input"
                     type="password"
